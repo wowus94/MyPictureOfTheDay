@@ -1,5 +1,7 @@
 package com.example.mypictureoftheday.view.picture
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +40,12 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(it)
         })
         viewModel.sendRequest()
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+               data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+            })
+        }
     }
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
