@@ -9,4 +9,6 @@
     <color name="color_on_primary">#FFFFFFFF</color>
     <color name="color_primary">#1E517A</color>
     <color name="background">#B7C1F0</color>
+    <color name="color_chip">#1E517A</color>
+
 </resources>

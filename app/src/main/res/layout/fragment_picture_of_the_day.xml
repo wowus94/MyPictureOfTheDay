@@ -38,4 +38,32 @@
         app:layout_constraintTop_toBottomOf="@+id/inputLayout"
         app:srcCompat="@drawable/ic_no_photo_vector" />
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/inputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/yesterday"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yesterday"
+            android:textColor="@color/color_on_primary"
+            app:chipBackgroundColor="@color/color_chip" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/today"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today"
+            android:textColor="@color/color_on_primary"
+            app:chipBackgroundColor="@color/color_chip" />
+    </com.google.android.material.chip.ChipGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

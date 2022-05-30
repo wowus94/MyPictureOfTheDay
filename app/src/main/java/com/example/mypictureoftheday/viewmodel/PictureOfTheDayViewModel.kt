@@ -11,19 +11,33 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PictureOfTheDayViewModel(
-    private val liveData: MutableLiveData<PictureOfTheDayAppState> = MutableLiveData(),
-    private val pictureOfDayRetrofitImp: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl()
+    private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayAppState> = MutableLiveData(),
+    private val retrofitImpl: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl()
 ) : ViewModel() {
     fun getLiveData(): LiveData<PictureOfTheDayAppState> {
-        return liveData
+        return liveDataForViewToObserve
     }
 
-    fun sendRequest() {
-        liveData.postValue(PictureOfTheDayAppState.Loading(null))
-        // TODO HW проверить на наличие BuildConfig.NASA_API_KEY
-        pictureOfDayRetrofitImp.getRetrofit().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
-            .enqueue(callback)
+    fun sendServerRequest() {
+        liveDataForViewToObserve.value = PictureOfTheDayAppState.Loading(0)
+        val apiKey: String = BuildConfig.NASA_API_KEY
+        if (apiKey.isBlank()) {
+            liveDataForViewToObserve.value = PictureOfTheDayAppState.Error(Throwable("wrong key"))
+        } else {
+            retrofitImpl.getRetrofit().getPictureOfTheDay(apiKey).enqueue(callback)
+        }
     }
+
+    fun sendServerRequest(date:String) {
+        liveDataForViewToObserve.value = PictureOfTheDayAppState.Loading(0)
+        val apiKey: String = BuildConfig.NASA_API_KEY
+        if (apiKey.isBlank()) {
+            liveDataForViewToObserve.value = PictureOfTheDayAppState.Error(Throwable("wrong key"))
+        } else {
+            retrofitImpl.getRetrofit().getPictureOfTheDay(apiKey,date).enqueue(callback)
+        }
+    }
+
 
     private val callback = object : Callback<PictureOfTheDayResponseData> {
         override fun onResponse(
@@ -32,7 +46,7 @@ class PictureOfTheDayViewModel(
         ) {
             if (response.isSuccessful) {
                 response.body()?.let {
-                    liveData.postValue(PictureOfTheDayAppState.Success(it))
+                    liveDataForViewToObserve.postValue(PictureOfTheDayAppState.Success(it))
                 }
             } else {
                 // TODO HW
