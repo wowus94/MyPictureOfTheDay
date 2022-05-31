@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,6 +31,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:contentDescription="@string/photo_of_the_day_stub"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,9 +43,7 @@
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/inputLayout"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="center_horizontal"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -66,4 +65,21 @@
             app:chipBackgroundColor="@color/color_chip" />
     </com.google.android.material.chip.ChipGroup>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="?colorPrimary"
+        app:fabAlignmentMode="center"
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?colorOnPrimary"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:srcCompat="@drawable/ic_plus_fab" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
