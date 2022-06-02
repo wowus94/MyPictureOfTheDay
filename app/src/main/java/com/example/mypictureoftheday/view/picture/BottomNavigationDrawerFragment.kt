@@ -35,6 +35,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     Log.d("@@@", "На экран 2")
                 }
             }
+            dismiss()
             true
         }
     }

@@ -5,11 +5,13 @@
         android:id="@+id/app_bar_fav"
         android:icon="@drawable/ic_favourite_menu"
         android:title="@string/favourite"
+        app:backgroundTint="?mainColor"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/app_bar_settings"
         android:icon="@drawable/ic_settings_menu"
         android:title="@string/settings"
+        app:backgroundTint="?mainColor"
         app:showAsAction="ifRoom" />
 </menu>

@@ -5,10 +5,17 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
     <color name="color_on_primary">#FFFFFFFF</color>
     <color name="color_primary">#1E517A</color>
+    <color name="color_primary_fon">#95CFFD</color>
     <color name="background">#B7C1F0</color>
     <color name="color_chip">#1E517A</color>
 
+    <color name="green">#338700</color>
+    <color name="green_fon">#A9D58F</color>
+    <color name="gray">#50514F</color>
+
+    <color name="red">#CA0E00</color>
+    <color name="red_fon">#EA6D6D</color>
+    <color name="black">#FF000000</color>
 </resources>

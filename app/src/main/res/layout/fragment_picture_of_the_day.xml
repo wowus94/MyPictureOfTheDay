@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:text="@string/yesterday"
             android:textColor="@color/color_on_primary"
-            app:chipBackgroundColor="@color/color_chip" />
+            app:chipBackgroundColor="?mainColor" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/today"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="@string/today"
             android:textColor="@color/color_on_primary"
-            app:chipBackgroundColor="@color/color_chip" />
+            app:chipBackgroundColor="?mainColor" />
     </com.google.android.material.chip.ChipGroup>
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="?colorPrimary"
+        app:backgroundTint="?mainColor"
         app:fabAlignmentMode="center"
         app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
 
@@ -78,8 +78,8 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="?colorOnPrimary"
+        android:backgroundTint="@color/color_on_primary"
         app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab" />
+        app:srcCompat="@drawable/ic_plus_fab"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

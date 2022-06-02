@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="mainColor" format="reference"/>
+    <attr name="secondColor" format="reference"/>
+    <attr name="fonColor" format="reference"/>
+</resources>
