@@ -18,7 +18,7 @@ class SetTheme : Fragment(), View.OnClickListener {
         super.onAttach(context)
         parentActivity = (context as MainActivity)
 
-        private var _binding: FragmentPictureOfTheDayBinding? = null
+        var _binding: FragmentPictureOfTheDayBinding? = null
         val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
 
@@ -36,15 +36,17 @@ class SetTheme : Fragment(), View.OnClickListener {
             when (parentActivity.getCurrentTheme()) {
                 1 -> binding.container.(R.id.setThemeButton)
 
-        }
+            }
 
 
-        override fun onClick(v: View?) {
-            when (v.id) {
-                R.id.setThemeButton -> {
-                    parentActivity.setCurrentTheme(RedTheme)
-                    parentActivity.recreate() // применяем для всей активити и для всех дочерних фрагментов
+            override fun onClick(v: View?) {
+                when (v.id) {
+                    R.id.setThemeButton -> {
+                        parentActivity.setCurrentTheme(RedTheme)
+                        parentActivity.recreate() // применяем для всей активити и для всех дочерних фрагментов
+                    }
                 }
             }
         }
     }
+}
