@@ -6,11 +6,33 @@
     android:layout_height="match_parent"
     android:background="?fonColor"
     tools:context=".view.picture.PictureOfTheDayFragment">
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/setThemeButton"
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/btnMainTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_theme"
+            android:textColor="?colorSecondary" />
+
+        <RadioButton
+            android:id="@+id/btnThemeGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/green_theme"
+            android:textColor="?colorSecondary" />
+
+        <RadioButton
+            android:id="@+id/btnThemeRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/red_theme"
+            android:textColor="?colorSecondary" />
+    </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout"

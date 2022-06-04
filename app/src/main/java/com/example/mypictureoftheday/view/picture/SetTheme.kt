@@ -32,9 +32,14 @@ class SetTheme : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.setThemeButton.setOnClickListener(this)
+        binding.btnMainTheme.setOnClickListener(this)
+        binding.btnThemeGreen.setOnClickListener(this)
+        binding.btnThemeRed.setOnClickListener(this)
+
         when (parentActivity.getCurrentTheme()) {
-            1 -> binding.container(R.id.setThemeButton)
+            1 -> binding.radioGroup.check(R.id.btnMainTheme)
+            2 -> binding.radioGroup.check(R.id.btnThemeGreen)
+            3 -> binding.radioGroup.check(R.id.btnThemeRed)
 
         }
 
@@ -42,9 +47,17 @@ class SetTheme : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v.id) {
-            R.id.setThemeButton -> {
-                parentActivity.setCurrentTheme(RedTheme)
+            R.id.main_theme -> {
+                parentActivity.setCurrentTheme(MainTheme)
                 parentActivity.recreate() // применяем для всей активити и для всех дочерних фрагментов
+            }
+            R.id.green_theme -> {
+                parentActivity.setCurrentTheme(MyGreenTheme)
+                parentActivity.recreate()
+            }
+            R.id.red_theme -> {
+                parentActivity.setCurrentTheme(MyRedTheme)
+                parentActivity.recreate()
             }
         }
     }
