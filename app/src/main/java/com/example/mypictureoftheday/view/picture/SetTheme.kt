@@ -34,7 +34,7 @@ class SetTheme : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.setThemeButton.setOnClickListener(this)
         when (parentActivity.getCurrentTheme()) {
-            1 -> binding.container.(R.id.setThemeButton)
+            1 -> binding.container(R.id.setThemeButton)
 
         }
 
