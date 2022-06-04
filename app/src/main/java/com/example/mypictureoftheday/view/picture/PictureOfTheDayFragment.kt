@@ -5,11 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
-import androidx.appcompat.view.menu.ShowableListMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,7 +47,8 @@ class PictureOfTheDayFragment : Fragment() {
                 Log.d("@@@", "app_bar_fav")
             }
             R.id.app_bar_settings -> {
-                SetTheme()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, SetTheme.newInstance()).commit()
             }
 
             android.R.id.home -> {
@@ -61,76 +57,76 @@ class PictureOfTheDayFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
-}
+    }
 
 
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
-        renderData(it)
-    })
-    viewModel.sendServerRequest()
-
-    binding.inputLayout.setEndIconOnClickListener {
-        startActivity(Intent(Intent.ACTION_VIEW).apply {
-            data =
-                Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
+            renderData(it)
         })
+        viewModel.sendServerRequest()
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+            })
+        }
+
+
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.yesterday -> {
+                    viewModel.sendServerRequest(takeDate(-1))
+                }
+                R.id.today -> {
+                    viewModel.sendServerRequest()
+                }
+            }
+        }
+
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
+
+    }
+
+    private fun takeDate(count: Int): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, count)
+        val format1 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        format1.timeZone = TimeZone.getTimeZone("EST")
+        return format1.format(currentDate.time)
     }
 
 
-    binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-        when (checkedId) {
-            R.id.yesterday -> {
-                viewModel.sendServerRequest(takeDate(-1))
+    private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
+        when (pictureOfTheDayAppState) {
+            is PictureOfTheDayAppState.Error -> {
+                // TODO HW
             }
-            R.id.today -> {
-                viewModel.sendServerRequest()
+            is PictureOfTheDayAppState.Loading -> {
+                binding.imageView.load(R.drawable.progress_animation) {
+                    placeholder(R.drawable.progress_image)
+                    error(R.drawable.ic_load_error_vector)
+                }
+            }
+            is PictureOfTheDayAppState.Success -> {
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url)
+
             }
         }
     }
 
-    (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
-    setHasOptionsMenu(true)
-
-}
-
-private fun takeDate(count: Int): String {
-    val currentDate = Calendar.getInstance()
-    currentDate.add(Calendar.DAY_OF_MONTH, count)
-    val format1 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-    format1.timeZone = TimeZone.getTimeZone("EST")
-    return format1.format(currentDate.time)
-}
-
-
-private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
-    when (pictureOfTheDayAppState) {
-        is PictureOfTheDayAppState.Error -> {
-            // TODO HW
-        }
-        is PictureOfTheDayAppState.Loading -> {
-            binding.imageView.load(R.drawable.progress_animation) {
-                placeholder(R.drawable.progress_image)
-                error(R.drawable.ic_load_error_vector)
-            }
-        }
-        is PictureOfTheDayAppState.Success -> {
-            binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url)
-
-        }
+    companion object {
+        @JvmStatic
+        fun newInstance() = PictureOfTheDayFragment()
     }
-}
 
-companion object {
-    @JvmStatic
-    fun newInstance() = PictureOfTheDayFragment()
-}
-
-override fun onDestroy() {
-    _binding = null
-    super.onDestroy()
-}
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
 
 }
 
