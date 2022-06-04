@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setTheme(R.style.MyGreenTheme)
         setContentView(R.layout.activity_main)
-        //var setThemeButton: Button? = null
+            //var setThemeButton: Button? = null
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putInt(KEY_CURRENT_THEME, currentTheme)
         editor.apply()
+    }
+
+    fun getCurrentTheme(): Int {
+        val sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE)
+        return sharedPreferences.getInt(KEY_CURRENT_THEME, -1)
     }
 }
 
