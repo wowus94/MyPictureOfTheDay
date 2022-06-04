@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mypictureoftheday.R
+import com.example.mypictureoftheday.databinding.ActivityMainBinding
 import com.example.mypictureoftheday.view.picture.PictureOfTheDayFragment
+import com.example.mypictureoftheday.view.picture.SetTheme
 
 const val MainTheme = 1
 const val MyGreenTheme = 2
@@ -18,12 +20,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setTheme(R.style.MyGreenTheme)
         setTheme(getRealStyle(getCurrentTheme()))
+
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
         }
     }
+
 
     fun setCurrentTheme(currentTheme: Int) {
         val sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE)

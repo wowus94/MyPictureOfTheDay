@@ -64,4 +64,8 @@ class SetTheme : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    companion object {
+        fun newInstance() = SetTheme()
+    }
 }

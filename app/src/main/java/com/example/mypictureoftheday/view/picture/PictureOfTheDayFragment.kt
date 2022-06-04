@@ -43,7 +43,6 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_bar, menu)
-
     }
 
 
@@ -53,7 +52,7 @@ class PictureOfTheDayFragment : Fragment() {
                 Log.d("@@@", "app_bar_fav")
             }
             R.id.app_bar_settings -> {
-                Log.d("@@@", "app_bar_settings")
+                SetTheme()
             }
 
             android.R.id.home -> {
