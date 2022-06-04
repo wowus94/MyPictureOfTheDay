@@ -12,5 +12,8 @@
     <string name="today">Сегодня</string>
     <string name="screen_1">На экран 1</string>
     <string name="screen_2">На экран 2</string>
+    <string name="main_theme">Основная тема</string>
+    <string name="green_theme">Зеленая тема</string>
+    <string name="red_theme">Красная тема</string>
 
 </resources>

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.picture.PictureOfTheDayFragment"
-    android:background="?fonColor">
+    android:background="?fonColor"
+    tools:context=".view.picture.PictureOfTheDayFragment">
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout"
@@ -81,6 +82,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/color_on_primary"
         app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab"/>
+        app:srcCompat="@drawable/ic_plus_fab" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

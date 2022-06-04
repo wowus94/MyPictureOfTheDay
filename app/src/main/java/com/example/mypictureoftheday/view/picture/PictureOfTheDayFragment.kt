@@ -5,6 +5,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
+import androidx.appcompat.view.menu.ShowableListMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,7 +43,9 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_bar, menu)
+
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -48,6 +55,7 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
             }
+
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")
@@ -124,5 +132,6 @@ override fun onDestroy() {
     _binding = null
     super.onDestroy()
 }
+
 }
 

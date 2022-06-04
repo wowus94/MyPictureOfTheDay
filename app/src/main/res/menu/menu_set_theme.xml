@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/main_theme"
+            android:title="@string/main_theme" />
+        <item
+            android:id="@+id/green_theme"
+            android:title="@string/green_theme" />
+        <item
+            android:id="@+id/red_theme"
+            android:title="@string/red_theme" />
+    </group>
+
+</menu>
