@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.mypictureoftheday.R
 import com.example.mypictureoftheday.databinding.FragmentPictureOfTheDayBinding
 import com.example.mypictureoftheday.view.MainActivity
+import com.example.mypictureoftheday.view.MainTheme
+import com.example.mypictureoftheday.view.MyGreenTheme
+import com.example.mypictureoftheday.view.MyRedTheme
 
 class SetTheme : Fragment(), View.OnClickListener {
 
@@ -45,7 +48,7 @@ class SetTheme : Fragment(), View.OnClickListener {
 
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
         when (v.id) {
             R.id.main_theme -> {
                 parentActivity.setCurrentTheme(MainTheme)
