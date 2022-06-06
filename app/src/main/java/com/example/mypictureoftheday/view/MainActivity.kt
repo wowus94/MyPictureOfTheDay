@@ -1,12 +1,10 @@
 package com.example.mypictureoftheday.view
 
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mypictureoftheday.R
-import com.example.mypictureoftheday.databinding.ActivityMainBinding
 import com.example.mypictureoftheday.view.picture.PictureOfTheDayFragment
-import com.example.mypictureoftheday.view.picture.SetTheme
 
 const val MainTheme = 1
 const val MyGreenTheme = 2

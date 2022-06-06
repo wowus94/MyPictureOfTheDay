@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,9 @@ import coil.load
 import com.example.mypictureoftheday.R
 import com.example.mypictureoftheday.databinding.FragmentPictureOfTheDayBinding
 import com.example.mypictureoftheday.view.MainActivity
+import com.example.mypictureoftheday.view.MainTheme
+import com.example.mypictureoftheday.view.MyGreenTheme
+import com.example.mypictureoftheday.view.MyRedTheme
 import com.example.mypictureoftheday.viewmodel.PictureOfTheDayAppState
 import com.example.mypictureoftheday.viewmodel.PictureOfTheDayViewModel
 import java.text.SimpleDateFormat
@@ -26,7 +30,7 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,7 +43,6 @@ class PictureOfTheDayFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_bar, menu)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -58,7 +61,6 @@ class PictureOfTheDayFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

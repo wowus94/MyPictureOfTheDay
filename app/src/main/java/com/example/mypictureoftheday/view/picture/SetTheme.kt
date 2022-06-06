@@ -2,6 +2,7 @@ package com.example.mypictureoftheday.view.picture
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,14 +22,14 @@ class SetTheme : Fragment(), View.OnClickListener {
         parentActivity = (context as MainActivity)
     }
 
-    var _binding: FragmentPictureOfTheDayBinding? = null
-    val binding: FragmentPictureOfTheDayBinding
+    private var _binding: FragmentPictureOfTheDayBinding? = null
+    private val binding
         get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,22 +44,20 @@ class SetTheme : Fragment(), View.OnClickListener {
             1 -> binding.radioGroup.check(R.id.btnMainTheme)
             2 -> binding.radioGroup.check(R.id.btnThemeGreen)
             3 -> binding.radioGroup.check(R.id.btnThemeRed)
-
         }
-
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.main_theme -> {
+            R.id.btnMainTheme -> {
                 parentActivity.setCurrentTheme(MainTheme)
                 parentActivity.recreate() // применяем для всей активити и для всех дочерних фрагментов
             }
-            R.id.green_theme -> {
+            R.id.btnThemeGreen -> {
                 parentActivity.setCurrentTheme(MyGreenTheme)
                 parentActivity.recreate()
             }
-            R.id.red_theme -> {
+            R.id.btnThemeRed -> {
                 parentActivity.setCurrentTheme(MyRedTheme)
                 parentActivity.recreate()
             }
